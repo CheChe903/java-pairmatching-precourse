@@ -5,6 +5,8 @@ import static pairmatching.utils.exception.ErrorMessage.KEY_ERROR;
 import pairmatching.domain.Course;
 import pairmatching.domain.Level;
 import pairmatching.domain.Level.Mission;
+import pairmatching.domain.MatchingResult;
+import pairmatching.domain.dto.ResultDTO;
 import pairmatching.utils.Finder;
 import pairmatching.utils.Splitter;
 import pairmatching.utils.exception.MatchingException;
@@ -33,6 +35,21 @@ public class MatchingManager {
         Course course = Finder.findCourseByName(userInput[0]);
         Level level = Finder.findLevelByName(userInput[1]);
         Mission mission = Finder.findMissionByName(userInput[2]);
+
+        if (MatchingResult.hasEqualResult(new ResultDTO(course, level, mission))) {
+            String input = inputView.askRematching();
+
+            if (input.equals("아니오")) {
+                matching();
+            }
+
+            if (!input.equals("네")) {
+                throw new MatchingException(KEY_ERROR);
+            }
+
+            MatchingResult.deleteResult(new ResultDTO(course, level, mission));
+        }
+
 
     }
 }
