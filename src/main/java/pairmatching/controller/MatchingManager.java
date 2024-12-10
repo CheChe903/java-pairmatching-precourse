@@ -2,6 +2,10 @@ package pairmatching.controller;
 
 import static pairmatching.utils.exception.ErrorMessage.KEY_ERROR;
 
+import pairmatching.domain.Course;
+import pairmatching.domain.Level;
+import pairmatching.domain.Level.Mission;
+import pairmatching.utils.Finder;
 import pairmatching.utils.Splitter;
 import pairmatching.utils.exception.MatchingException;
 import pairmatching.view.InputView;
@@ -25,6 +29,10 @@ public class MatchingManager {
         if (userInput.length != 3) {
             throw new MatchingException(KEY_ERROR);
         }
+
+        Course course = Finder.findCourseByName(userInput[0]);
+        Level level = Finder.findLevelByName(userInput[1]);
+        Mission mission = Finder.findMissionByName(userInput[2]);
 
     }
 }
