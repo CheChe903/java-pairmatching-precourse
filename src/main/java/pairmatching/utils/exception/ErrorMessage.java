@@ -2,6 +2,8 @@ package pairmatching.utils.exception;
 
 public enum ErrorMessage {
 
+    ASD("asd");
+
     private static final String PREFIX = "[ERROR] ";
     private final String message;
 
