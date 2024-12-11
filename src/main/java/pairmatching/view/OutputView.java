@@ -1,5 +1,8 @@
 package pairmatching.view;
 
+import java.util.List;
+import pairmatching.domain.MatchingResult;
+
 public class OutputView {
 
     public void printCourseAndLevelAndMission() {
@@ -14,5 +17,12 @@ public class OutputView {
         System.out.println("  - 레벨5:");
         System.out.println("#############################################");
 
+    }
+
+    public void printMatchingResult(MatchingResult matchingResult) {
+        for (List<String> crews : matchingResult.getCrews()) {
+            String crewNames = String.join(" : ", crews);
+            System.out.println(crewNames);
+        }
     }
 }
