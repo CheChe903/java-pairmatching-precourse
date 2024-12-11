@@ -1,6 +1,5 @@
 package pairmatching;
 
-import pairmatching.controller.FairController;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 

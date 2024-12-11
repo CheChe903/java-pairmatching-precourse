@@ -16,7 +16,6 @@ public class Finder {
                 return course;
             }
         }
-
         throw new MatchingException(KEY_ERROR);
     }
 
